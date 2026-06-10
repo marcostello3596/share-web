@@ -1,0 +1,8 @@
+# Archivos de sistema
+.DS_Store
+
+# Archivos de referencia de otro sitio (no subir: material de terceros)
+extracted-1781052914962/
+
+# Capturas de trabajo
+Screenshot*.png
