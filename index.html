@@ -297,6 +297,28 @@
   }
   .modal-close:hover{color:var(--yellow)}
 
+  /* ============ PRELOADER ============ */
+  .preloader{
+    position:fixed;inset:0;z-index:1000;
+    background:var(--bg);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+    transition:opacity .5s ease;
+  }
+  .preloader.done{opacity:0;pointer-events:none}
+  .preloader img{
+    width:min(46vw,280px);
+    animation:pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .preloader .dots{display:flex;gap:10px}
+  .preloader .dots i{
+    width:10px;height:10px;border-radius:50%;background:var(--yellow);
+    animation:dotjump 1s ease-in-out infinite;
+  }
+  .preloader .dots i:nth-child(2){background:var(--purple);animation-delay:.15s}
+  .preloader .dots i:nth-child(3){animation-delay:.3s}
+  @keyframes dotjump{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-9px);opacity:1}}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
@@ -325,6 +347,12 @@
 </style>
 </head>
 <body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader">
+  <img src="share%20-1.svg" alt="share">
+  <div class="dots"><i></i><i></i><i></i></div>
+</div>
 
 <div class="header-cta"><button class="pill" onclick="openModal()">empezar un proyecto</button></div>
 
@@ -476,6 +504,34 @@
 </div>
 
 <script>
+  // preloader: se va cuando el video del hero puede reproducirse,
+  // pero se muestra como mínimo 1.2s para que la animación se aprecie
+  (function(){
+    const pre=document.getElementById('preloader');
+    const video=document.querySelector('.hero-video');
+    const MIN=1200;
+    const start=Date.now();
+    let hidden=false;
+    function hide(){
+      if(hidden)return;hidden=true;
+      const wait=Math.max(0,MIN-(Date.now()-start));
+      setTimeout(()=>{
+        pre.classList.add('done');
+        setTimeout(()=>pre.remove(),600);
+      },wait);
+    }
+    if(video){
+      if(video.readyState>=3)hide();
+      else{
+        video.addEventListener('canplaythrough',hide,{once:true});
+        video.addEventListener('canplay',hide,{once:true});
+      }
+    }
+    // por las dudas: nunca más de 5 segundos de espera
+    setTimeout(hide,5000);
+    addEventListener('load',()=>setTimeout(hide,1500));
+  })();
+
   function openModal(){document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
   function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
