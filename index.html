@@ -112,15 +112,15 @@
   /* ============ AGENCY COLLAGE ============ */
   .agency{
     position:relative;padding:14vh 28px;
-    display:grid;grid-template-columns:1.1fr auto 1fr;gap:5vw;align-items:center;
+    display:flex;flex-direction:column;align-items:center;gap:46px;
   }
-  .agency .statement{max-width:380px;text-align:center;justify-self:center}
+  .agency .statement{max-width:420px;text-align:center}
   .agency .statement p{font-size:17px;font-weight:700;text-transform:uppercase;line-height:1.5}
-  .agency .smiley-x{width:clamp(110px,13vw,240px)}
+  .agency .smiley-x{width:clamp(90px,9vw,160px);transform:rotate(8deg)}
   .team-photo{
-    transform:rotate(-5deg);
+    transform:rotate(-3deg);
     box-shadow:0 22px 60px rgba(0,0,0,.55);
-    overflow:hidden;max-width:560px;width:100%;justify-self:start;
+    overflow:hidden;width:min(78vw,920px);
   }
   .team-photo img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.08)}
   .team-photo figcaption{
@@ -208,6 +208,34 @@
   .step h3{font-size:clamp(22px,2.6vw,36px);font-weight:800;letter-spacing:-.025em}
   .step:hover h3{color:var(--yellow)}
   .step p{color:var(--gray);font-size:16px;line-height:1.55;font-weight:500}
+
+  /* ============ PLANES / PRESUPUESTOS (bajo perfil) ============ */
+  .plans{padding:6vh 28px 12vh}
+  .plans .plans-title{
+    font-size:clamp(20px,2.2vw,30px);font-weight:800;letter-spacing:-.02em;
+    margin-bottom:10px;
+  }
+  .plans .plans-sub{color:var(--gray);font-size:15px;font-weight:500;margin-bottom:5vh;max-width:480px}
+  .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .plan{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    padding:24px;display:flex;flex-direction:column;gap:14px;
+    transition:.25s;cursor:pointer;
+  }
+  .plan:hover{border-color:var(--purple)}
+  .plan .ptag{
+    align-self:flex-start;background:var(--purple);color:var(--ink);
+    font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 10px;border-radius:6px;
+  }
+  .plan h4{font-size:19px;font-weight:800;letter-spacing:-.02em}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:7px;flex:1}
+  .plan li{
+    color:var(--gray);font-size:14px;font-weight:500;line-height:1.4;
+    padding-left:16px;position:relative;
+  }
+  .plan li::before{content:"—";position:absolute;left:0;color:var(--yellow)}
+  .plan .plink{font-size:13.5px;font-weight:700;color:var(--yellow)}
 
   /* ============ SERVICES ============ */
   .services-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;margin-top:8vh}
@@ -339,6 +367,8 @@
     .step{grid-template-columns:60px 1fr;row-gap:10px}
     .step p{grid-column:2}
     .logo-tile{width:150px;height:96px}
+    .plans-grid{grid-template-columns:1fr}
+    .plans{padding:4vh 18px 8vh}
     .contact{padding:14vh 18px 10vh}
     .contact .links{gap:18px}
     .modal-box{padding:30px 22px;border-radius:20px}
@@ -459,6 +489,50 @@
       <span class="num">03</span>
       <h3>Expansión de marca</h3>
       <p>Online + offline. Llevamos la marca más allá de lo digital generando impacto en el entorno físico: vía pública, campaña 360 y gestión de presupuesto.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ PLANES / PRESUPUESTOS ============ -->
+<section class="plans">
+  <h3 class="plans-title reveal">¿Buscás algo más puntual?</h3>
+  <p class="plans-sub reveal">Además del Método Share 360, tenemos paquetes específicos según lo que tu marca necesite hoy.</p>
+  <div class="plans-grid reveal">
+    <div class="plan" onclick="openModal()">
+      <span class="ptag">redes sociales</span>
+      <h4>Paquete Medio</h4>
+      <ul>
+        <li>1 post semanal</li>
+        <li>2 historias por semana</li>
+        <li>2 reels mensuales</li>
+      </ul>
+      <span class="plink">consultar →</span>
+    </div>
+    <div class="plan" onclick="openModal()">
+      <span class="ptag">redes sociales</span>
+      <h4>Paquete Full</h4>
+      <ul>
+        <li>1 post semanal</li>
+        <li>2 historias, 3 veces por semana</li>
+        <li>4 reels mensuales</li>
+        <li>1 sesión corta de grabación</li>
+        <li>Planificación mensual</li>
+        <li>Redacción de copys</li>
+      </ul>
+      <span class="plink">consultar →</span>
+    </div>
+    <div class="plan" onclick="openModal()">
+      <span class="ptag">pauta publicitaria</span>
+      <h4>SEO & SEM · Meta Ads & Google Ads</h4>
+      <ul>
+        <li>Meta Ads o Google Ads según el rubro de tu negocio</li>
+        <li>Optimización de perfiles</li>
+        <li>Diseño de creativos</li>
+        <li>Reportes</li>
+        <li>Acompañamiento y optimización</li>
+      </ul>
+      <span class="plink">consultar →</span>
     </div>
   </div>
 </section>
