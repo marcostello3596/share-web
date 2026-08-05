@@ -3,95 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SHARE Academy — próximamente</title>
-<meta name="description" content="SHARE Academy: formación en marketing digital y contenido. Muy pronto.">
+<title>SHARE Academy — plantillas de Canva para tu Instagram</title>
+<meta name="description" content="Packs de plantillas editables en Canva para que manejes tus redes sin depender de nadie. Por rubro: nutrición, odontología, fitness, gastronomía y más.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0e0d11;--ink:#f1efe9;--gray:#8d8a93;--purple:#6c35c9;
-    --yellow:#f2e34c;--card:#17151c;--line:rgba(241,239,233,.14);
+    --bg:#0e0d11;--ink:#f1efe9;--gray:#8d8a93;--gray2:#c9c7c1;
+    --purple:#6c35c9;--purple-l:#a678ec;--yellow:#f2e34c;
+    --card:#17151c;--card2:#0a090c;--line:rgba(241,239,233,.14);
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{
     background:var(--bg);color:var(--ink);
     font-family:"Inter Tight",Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    min-height:100svh;display:flex;flex-direction:column;
-    position:relative;overflow-x:hidden;
-  }
-  body::before{
-    content:"";position:fixed;inset:0;
-    background:url("share%20-2.svg") center/cover no-repeat;
-    opacity:.16;pointer-events:none;z-index:0;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none}
   svg{display:block}
   ::selection{background:var(--yellow);color:#0e0d11}
+  mark{background:var(--purple);color:var(--ink);padding:.04em .18em;border-radius:4px;
+       box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
+  /* ---------- NAV ---------- */
   header{
-    position:relative;z-index:2;
-    display:flex;align-items:center;justify-content:center;
-    padding:22px 28px;
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:center;padding:22px 28px;pointer-events:none;
   }
+  header>*{pointer-events:auto}
   .nav-links{
     background:var(--card);border:1px solid var(--line);border-radius:100px;
-    display:flex;gap:26px;padding:14px 28px;font-size:15.5px;font-weight:600;
+    display:flex;gap:30px;padding:15px 30px;font-size:16px;font-weight:600;
+    box-shadow:0 2px 14px rgba(0,0,0,.4);
   }
   .nav-links a{opacity:.7;transition:.2s}
   .nav-links a:hover{opacity:1;color:var(--yellow)}
   .nav-links a.on{opacity:1;color:var(--yellow)}
+  .header-cta{position:fixed;top:22px;right:28px;z-index:101}
   .pill{
     display:inline-block;border:none;border-radius:100px;
     background:var(--purple);color:var(--ink);
-    padding:14px 26px;font-size:15.5px;font-weight:700;
-    cursor:pointer;font-family:inherit;transition:.2s;
+    padding:15px 28px;font-size:16px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.2s;text-align:center;
   }
   .pill:hover{background:var(--yellow);color:#0e0d11}
+  .pill.yellow{background:var(--yellow);color:#0e0d11}
+  .pill.yellow:hover{background:var(--purple);color:var(--ink)}
+  .pill.big{padding:19px 40px;font-size:18px}
 
-  main{
-    position:relative;z-index:2;flex:1;
-    display:flex;flex-direction:column;justify-content:center;
-    padding:6vh 28px 10vh;max-width:1100px;
-  }
+  section{padding:13vh 28px;position:relative}
+  .wrap{max-width:1240px;margin:0 auto}
   .eyebrow{
     display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
-    font-weight:700;color:var(--yellow);margin-bottom:26px;
+    font-weight:700;color:var(--yellow);margin-bottom:24px;
   }
-  h1{
-    font-weight:700;letter-spacing:-.04em;line-height:1;
-    font-size:clamp(52px,11vw,168px);text-transform:lowercase;
-  }
-  h1 .soon{color:#46434e;display:block}
-  main p{
-    margin-top:5vh;max-width:520px;color:var(--gray);
-    font-size:clamp(16px,1.8vw,20px);line-height:1.55;font-weight:500;
-  }
-  main p mark{background:var(--purple);color:var(--ink);padding:.04em .18em;border-radius:4px}
-  .actions{margin-top:6vh;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  h2.display{font-weight:700;letter-spacing:-.035em;line-height:1.04;font-size:clamp(34px,5vw,72px)}
+  h2.display .alt{color:var(--yellow)}
+  .lead{color:var(--gray2);font-size:clamp(16px,1.7vw,20px);line-height:1.55;font-weight:500;max-width:640px}
 
-  .doodle{position:fixed;z-index:1;pointer-events:none}
-  .smile{top:16%;right:7vw;width:clamp(90px,11vw,190px)}
-  .star{bottom:16%;right:20vw;width:clamp(46px,5vw,90px);animation:spin 22s linear infinite}
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:20vh 28px 12vh;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:url("share%20-2.svg") center/cover no-repeat;
+    opacity:.12;pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{
+    font-weight:700;letter-spacing:-.04em;line-height:1.02;
+    font-size:clamp(40px,7vw,104px);max-width:15ch;
+  }
+  .hero h1 .alt{color:var(--yellow)}
+  .hero .lead{margin-top:4vh}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:5vh}
+  .badge{
+    border:1px solid var(--line);border-radius:100px;padding:9px 16px;
+    font-size:13px;font-weight:600;color:var(--gray2);
+  }
+  .badge b{color:var(--yellow);font-weight:700}
+  .hero-actions{margin-top:5vh;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-note{font-size:13.5px;color:var(--gray);font-weight:500}
+  .doodle{position:absolute;pointer-events:none;z-index:1}
+  .hero .smile{top:16%;right:6vw;width:clamp(80px,10vw,170px)}
+  .hero .star{bottom:14%;right:22vw;width:clamp(40px,4.5vw,80px);animation:spin 20s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
 
-  footer{
-    position:relative;z-index:2;
-    border-top:1px solid var(--line);padding:24px 28px;
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
-    font-size:13.5px;color:var(--gray);font-weight:500;
+  /* ---------- PARA VOS ---------- */
+  .foryou-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:6vh}
+  .foryou{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:22px 24px;display:flex;gap:14px;align-items:flex-start;
   }
+  .foryou i{
+    flex-shrink:0;width:22px;height:22px;border-radius:50%;
+    background:var(--purple);display:flex;align-items:center;justify-content:center;
+    font-style:normal;font-size:12px;font-weight:800;color:var(--yellow);margin-top:2px;
+  }
+  .foryou p{font-size:15.5px;line-height:1.45;color:var(--gray2);font-weight:500}
+
+  /* ---------- PACKS ---------- */
+  .packs-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .packs-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:7vh;
+  }
+  .pack{
+    background:var(--card2);border:1px solid var(--line);border-radius:16px;
+    padding:14px;transition:transform .3s,border-color .3s;cursor:pointer;
+  }
+  .pack:hover{transform:translateY(-6px);border-color:var(--purple)}
+  .feed{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:8px;overflow:hidden}
+  .tile{aspect-ratio:4/5;position:relative;overflow:hidden;display:block}
+  .tile .bar{position:absolute;height:5%;border-radius:2px;opacity:.85}
+  .tile .dot{position:absolute;border-radius:50%}
+  .tile .ring{position:absolute;border-radius:50%;border-style:solid}
+  .pack-name{
+    display:flex;justify-content:space-between;align-items:baseline;
+    margin-top:14px;padding:0 4px 4px;
+  }
+  .pack-name b{font-size:15px;font-weight:800;letter-spacing:-.02em}
+  .pack-name span{font-size:12px;color:var(--gray);font-weight:600}
+  .packs-more{
+    margin-top:5vh;text-align:center;color:var(--gray);font-size:15px;font-weight:600;
+  }
+  .packs-more b{color:var(--yellow)}
+
+  /* ---------- INCLUYE ---------- */
+  .includes{display:grid;grid-template-columns:1.05fr .95fr;gap:5vw;align-items:center}
+  .checklist{list-style:none;margin-top:5vh;display:flex;flex-direction:column;gap:14px}
+  .checklist li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-size:16.5px;line-height:1.4;font-weight:500;color:var(--gray2);
+  }
+  .checklist li b{color:var(--ink);font-weight:700}
+  .checklist svg{flex-shrink:0;margin-top:3px}
+  .mock{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;
+  }
+  .mock .phone{
+    background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:14px;
+  }
+  .mock .phone .feed{gap:4px}
+  .mock-cap{margin-top:16px;font-size:13px;color:var(--gray);font-weight:600;text-align:center}
+
+  /* ---------- PRECIO ---------- */
+  .price-card{
+    background:var(--purple);border-radius:24px;padding:48px 40px;text-align:center;
+    max-width:720px;margin:7vh auto 0;position:relative;overflow:hidden;
+  }
+  .price-card .off{
+    display:inline-block;background:var(--yellow);color:#111;border-radius:6px;
+    padding:6px 12px;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .price-old{margin-top:22px;font-size:17px;color:rgba(255,255,255,.7);font-weight:600}
+  .price-old s{opacity:.8}
+  .price-now{font-size:clamp(52px,9vw,104px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--yellow)}
+  .price-cur{font-size:.42em;vertical-align:super;font-weight:700}
+  .price-sub{margin-top:10px;font-size:15px;color:rgba(255,255,255,.82);font-weight:600}
+  .price-card .pill{margin-top:32px}
+  .price-mini{margin-top:18px;font-size:13px;color:rgba(255,255,255,.7);font-weight:500}
+
+  /* ---------- FAQ ---------- */
+  .faq{margin-top:6vh;max-width:860px}
+  details{
+    border-top:1px solid var(--line);padding:22px 4px;
+  }
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{
+    cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;
+    font-size:clamp(16px,1.9vw,20px);font-weight:700;letter-spacing:-.01em;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--yellow);font-weight:800;font-size:22px;line-height:1}
+  details[open] summary::after{content:"–"}
+  details[open] summary{color:var(--yellow)}
+  details p{margin-top:14px;color:var(--gray);font-size:15.5px;line-height:1.55;font-weight:500;max-width:70ch}
+
+  /* ---------- CTA FINAL ---------- */
+  .final{text-align:center;padding:18vh 28px 14vh;position:relative;overflow:hidden}
+  .final::before{
+    content:"";position:absolute;inset:0;
+    background:url("share%20-2.svg") center/cover no-repeat;opacity:.16;pointer-events:none;
+  }
+  .final .wrap{position:relative;z-index:2}
+  .final h2{font-size:clamp(40px,7.4vw,104px)}
+  .final .lead{margin:4vh auto 5vh}
+
+  footer{
+    border-top:1px solid var(--line);padding:26px 28px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+    font-size:14px;color:var(--gray);font-weight:500;
+  }
+  footer img{height:38px;width:auto}
   footer a:hover{color:var(--yellow)}
 
-  @media(max-width:900px){
-    header{padding:14px}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:1080px){
+    .packs-grid{grid-template-columns:repeat(3,1fr)}
+    .includes{grid-template-columns:1fr;gap:46px}
+  }
+  @media(max-width:760px){
+    header{padding:14px;justify-content:flex-start}
     .nav-links{padding:11px 18px;gap:16px;font-size:14px}
-    .pill{padding:11px 18px;font-size:14px}
-    main{padding:4vh 18px 8vh}
-    footer{padding:20px 18px;flex-direction:column;align-items:flex-start;gap:8px}
-    .star{display:none}
-    .smile{top:auto;bottom:22%;right:6vw}
+    .header-cta{top:14px;right:14px}
+    .header-cta .pill{padding:11px 18px;font-size:14px}
+    section{padding:9vh 18px}
+    .hero{padding:16vh 18px 9vh}
+    .hero .star{display:none}
+    .foryou-grid{grid-template-columns:1fr}
+    .packs-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+    .price-card{padding:36px 22px}
+    .final{padding:13vh 18px 10vh}
+    footer{flex-direction:column;align-items:flex-start;gap:10px}
   }
 </style>
 </head>
@@ -103,31 +231,255 @@
     <a class="on" href="academy.html">academy</a>
   </nav>
 </header>
+<div class="header-cta">
+  <a class="pill" href="#packs">ver los packs</a>
+</div>
 
-<svg class="doodle smile" viewBox="0 0 200 200" fill="none">
-  <path d="M97 13 C 146 8 188 48 187 99 C 186 151 149 189 99 187 C 49 185 12 147 14 97 C 16 49 51 17 97 13 Z" stroke="#6c35c9" stroke-width="16" stroke-linecap="round"/>
-  <path d="M56 80 q15 -16 31 -2" stroke="#6c35c9" stroke-width="13" stroke-linecap="round"/>
-  <ellipse cx="130" cy="78" rx="12" ry="19" fill="#6c35c9" transform="rotate(6 130 78)"/>
-  <path d="M57 122 q40 38 85 2" stroke="#6c35c9" stroke-width="15" stroke-linecap="round"/>
-</svg>
-<svg class="doodle star" viewBox="0 0 100 100" fill="none">
-  <path d="M50 2 L58 42 L98 50 L58 58 L50 98 L42 58 L2 50 L42 42 Z" fill="#f2e34c"/>
-</svg>
-
-<main>
-  <span class="eyebrow">share academy</span>
-  <h1>academy<span class="soon">próximamente</span></h1>
-  <p>Estamos preparando los cursos y talleres de SHARE Academy. <mark>Dejanos tu contacto</mark> y sos de los primeros en enterarte cuando abramos las inscripciones.</p>
-  <div class="actions">
-    <a class="pill" href="https://wa.me/5492616979251?text=%C2%A1Hola%20SHARE!%20Quiero%20que%20me%20avisen%20cuando%20abra%20la%20Academy." target="_blank" rel="noopener">avisame cuando abra</a>
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <svg class="doodle smile" viewBox="0 0 200 200" fill="none">
+    <path d="M97 13 C 146 8 188 48 187 99 C 186 151 149 189 99 187 C 49 185 12 147 14 97 C 16 49 51 17 97 13 Z" stroke="#f2e34c" stroke-width="16" stroke-linecap="round"/>
+    <path d="M56 80 q15 -16 31 -2" stroke="#f2e34c" stroke-width="13" stroke-linecap="round"/>
+    <ellipse cx="130" cy="78" rx="12" ry="19" fill="#f2e34c" transform="rotate(6 130 78)"/>
+    <path d="M57 122 q40 38 85 2" stroke="#f2e34c" stroke-width="15" stroke-linecap="round"/>
+  </svg>
+  <svg class="doodle star" viewBox="0 0 100 100" fill="none">
+    <path d="M50 2 L58 42 L98 50 L58 58 L50 98 L42 58 L2 50 L42 42 Z" fill="#6c35c9"/>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow">share academy</span>
+    <h1>Tu Instagram profesional <span class="alt">sin depender de nadie.</span></h1>
+    <p class="lead">Packs de plantillas editables en Canva, pensadas por rubro. Elegís, editás y publicás. Sin diseñador, sin empezar de cero y sin pasarte horas mirando la pantalla.</p>
+    <div class="badges">
+      <span class="badge"><b>Acceso inmediato</b></span>
+      <span class="badge">Funciona con <b>Canva gratis</b></span>
+      <span class="badge">Actualizaciones incluidas</span>
+    </div>
+    <div class="hero-actions">
+      <a class="pill yellow big" href="#precio">quiero mis plantillas</a>
+      <span class="hero-note">Pago único · Sin suscripción</span>
+    </div>
   </div>
-</main>
+</div>
+
+<!-- ============ ¿ES PARA VOS? ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">¿es para vos?</span>
+    <h2 class="display reveal">Esto te suena,<br><span class="alt">¿no?</span></h2>
+    <div class="foryou-grid">
+      <div class="foryou reveal"><i>✓</i><p>Pasás horas armando un posteo y nunca quedás conforme.</p></div>
+      <div class="foryou reveal"><i>✓</i><p>Querés un feed prolijo y armónico, pero no sabés por dónde arrancar.</p></div>
+      <div class="foryou reveal"><i>✓</i><p>Necesitás transmitir profesionalismo y destacarte de tu competencia.</p></div>
+      <div class="foryou reveal"><i>✓</i><p>Todavía no podés pagar una agencia todos los meses.</p></div>
+      <div class="foryou reveal"><i>✓</i><p>Te falta tiempo, constancia e ideas para publicar seguido.</p></div>
+      <div class="foryou reveal"><i>✓</i><p>Abrís Canva, mirás la hoja en blanco y cerrás Canva.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKS ============ -->
+<section id="packs">
+  <div class="wrap">
+    <div class="packs-head">
+      <div>
+        <span class="eyebrow reveal">los packs</span>
+        <h2 class="display reveal">No elegís uno:<br><span class="alt">te los llevás todos.</span></h2>
+      </div>
+      <p class="lead reveal" style="max-width:400px;font-size:16px">Cada pack está pensado para un rubro, con los posteos que ese negocio necesita: presentación, servicios, tips, precios, testimonios y frases.</p>
+    </div>
+    <div class="packs-grid" id="packs-grid"></div>
+    <p class="packs-more reveal">Y seguimos sumando packs nuevos <b>todos los meses</b>, sin costo adicional.</p>
+  </div>
+</section>
+
+<!-- ============ QUÉ INCLUYE ============ -->
+<section>
+  <div class="wrap includes">
+    <div>
+      <span class="eyebrow reveal">qué te llevás</span>
+      <h2 class="display reveal">Todo listo<br>para publicar</h2>
+      <ul class="checklist">
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>+300 plantillas editables</b> para posteos, carruseles e historias</span></li>
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Packs organizados por rubro</b>, con acceso a todos</span></li>
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Compatible con <b>Canva gratuito</b>: no necesitás la versión paga</span></li>
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Guía de <b>paletas de colores</b> y combinaciones de tipografías</span></li>
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Checklist</b> para optimizar tu perfil de Instagram</span></li>
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Ideas de contenido</b> para no quedarte sin qué publicar</span></li>
+        <li class="reveal"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5 L6 12.5 L14 3.5" stroke="#f2e34c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Tutorial de <b>cómo editar paso a paso</b>, aunque nunca hayas usado Canva</span></li>
+      </ul>
+    </div>
+    <div class="mock reveal">
+      <div class="phone"><div class="feed" id="mock-feed"></div></div>
+      <p class="mock-cap">Así se ve un feed armado con las plantillas</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRECIO ============ -->
+<section id="precio">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal" style="text-align:center">la inversión</span>
+    <h2 class="display reveal">Menos de lo que sale<br><span class="alt">un solo posteo.</span></h2>
+    <div class="price-card reveal">
+      <span class="off">Precio de lanzamiento</span>
+      <p class="price-old">Antes <s>$00.000</s></p>
+      <div class="price-now"><span class="price-cur">$</span>00.000</div>
+      <p class="price-sub">Pago único · Acceso inmediato · Actualizaciones incluidas</p>
+      <a class="pill yellow big" href="https://wa.me/5492616979251?text=%C2%A1Hola%20SHARE!%20Quiero%20comprar%20el%20pack%20de%20plantillas%20de%20la%20Academy." target="_blank" rel="noopener">lo quiero ahora</a>
+      <p class="price-mini">¿Dudas antes de comprar? Escribinos y te contamos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow reveal">preguntas frecuentes</span>
+    <h2 class="display reveal">Lo que todos<br>preguntan</h2>
+    <div class="faq">
+      <details class="reveal">
+        <summary>¿Necesito saber diseñar?</summary>
+        <p>No. Las plantillas ya están armadas: cambiás el texto, ponés tus fotos y tus colores, y listo. Si nunca usaste Canva, incluimos un tutorial paso a paso.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Sirve con la versión gratuita de Canva?</summary>
+        <p>Sí. Todas las plantillas están hechas para funcionar con Canva gratis. Si tenés Canva Pro vas a tener algunas funciones extra, pero no hace falta.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Cómo las recibo?</summary>
+        <p>Apenas se acredita el pago te llega el acceso: abrís los links, se copian a tu cuenta de Canva y ya podés empezar a editar.</p>
+      </details>
+      <details class="reveal">
+        <summary>Mi rubro no está en la lista, ¿me sirve igual?</summary>
+        <p>Sí. Todas las plantillas son editables, así que podés adaptar cualquier pack a tu negocio cambiando textos, fotos y colores. Además sumamos packs nuevos todos los meses.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Es un pago mensual?</summary>
+        <p>No, es un pago único. Comprás una vez y las plantillas quedan tuyas, con las actualizaciones incluidas.</p>
+      </details>
+      <details class="reveal">
+        <summary>¿Y si prefiero que lo hagan ustedes?</summary>
+        <p>También podemos. Esa es la parte de <a href="index.html" style="color:var(--yellow);border-bottom:1px solid var(--yellow)">SHARE Agency</a>: gestionamos tus redes, la pauta y el contenido de punta a punta.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="display">Dejá de pelearte<br>con Canva.<br><span class="alt">¡Animate!</span></h2>
+    <p class="lead" style="text-align:center">Tu perfil puede verse profesional esta misma semana. Nosotros ya hicimos la parte difícil.</p>
+    <a class="pill yellow big" href="https://wa.me/5492616979251?text=%C2%A1Hola%20SHARE!%20Quiero%20comprar%20el%20pack%20de%20plantillas%20de%20la%20Academy." target="_blank" rel="noopener">quiero mis plantillas</a>
+  </div>
+</section>
 
 <footer>
-  <span>share — marketing digital &amp; diseño</span>
+  <span><img src="share%20-1.svg" alt="share"></span>
   <span><a href="https://www.instagram.com/share_mza" target="_blank" rel="noopener">@share_mza</a></span>
   <span>© 2026 share. todos los derechos reservados.</span>
 </footer>
 
+<script>
+  /* ====== MOCKUPS DE FEED (placeholders) ======
+     Se generan por CSS: son maquetas de muestra para reemplazar
+     luego por las imágenes reales de cada pack.                */
+  const PACKS = [
+    {n:"Pack Nutri",      t:"nutrición",       p:["#e8ecd7","#cdd6b0","#8f9b6d","#f5f3ea","#5f6a45"]},
+    {n:"Pack Dentist",    t:"odontología",     p:["#e7eef2","#c3d7e2","#7fa3b8","#f6f8f9","#3f5c6e"]},
+    {n:"Pack Fitness",    t:"gimnasios",       p:["#1f1f1f","#3a3a3a","#d7ff4f","#f2f2f0","#111111"]},
+    {n:"Pack Beauty",     t:"estética",        p:["#f3e3e0","#e3c3bd","#c39b93","#faf4f2","#7d5b55"]},
+    {n:"Pack Inmo",       t:"inmobiliarias",   p:["#efeae1","#d8cdbb","#a8917a","#f8f5f0","#4d4235"]},
+    {n:"Pack Gastro",     t:"gastronomía",     p:["#f0e2d5","#dfb894","#b96f3f","#faf3ec","#6b3b1f"]},
+    {n:"Pack Automotor",  t:"concesionarias",  p:["#e6e8ea","#c2c7cc","#5d6a76","#f4f5f6","#232a31"]},
+    {n:"Pack Indumentaria",t:"tiendas de ropa",p:["#f2efe9","#ded6c8","#b3a794","#faf8f4","#4a4438"]},
+    {n:"Pack Psico",      t:"salud mental",    p:["#ece6df","#d5c8bb","#a58f7c","#f7f3ee","#584a3d"]},
+    {n:"Pack Pet",        t:"veterinarias",    p:["#f6ecd8","#eed7a8","#cfa84f","#fbf6ea","#7a5c1e"]},
+    {n:"Pack Coach",      t:"coaching",        p:["#eae6f4","#cdc3e4","#9280c0","#f7f5fb","#4a3d70"]},
+    {n:"Pack Eventos",    t:"eventos",         p:["#f1e7ef","#dcc4d6","#a97fa0","#faf5f9","#5c3d55"]},
+  ];
+
+  // layouts: cómo se compone cada casillero del feed
+  const LAYOUTS = ["photo","text","shape","quote","photo","number","photo","text","shape"];
+
+  function tile(kind, pal, i){
+    const [c1,c2,c3,c4,ink] = pal;
+    const el = document.createElement("div");
+    el.className = "tile";
+    const bgs = {photo:c2, text:c4, shape:c1, quote:c4, number:c3};
+    el.style.background = bgs[kind] || c1;
+
+    const bar = (top,left,width,color,h) => {
+      const b = document.createElement("div");
+      b.className = "bar";
+      b.style.top = top+"%"; b.style.left = left+"%";
+      b.style.width = width+"%"; b.style.background = color;
+      if(h) b.style.height = h+"%";
+      return b;
+    };
+
+    if(kind === "photo"){
+      el.style.background = `linear-gradient(150deg, ${c2}, ${c3})`;
+      const d = document.createElement("div");
+      d.className = "ring";
+      d.style.cssText = `width:52%;aspect-ratio:1;left:24%;top:22%;border-width:1.5px;border-color:${c4};opacity:.55`;
+      el.appendChild(d);
+      el.appendChild(bar(78,14,52,c4,4));
+    } else if(kind === "text"){
+      el.appendChild(bar(26,14,64,ink,6));
+      el.appendChild(bar(40,14,52,ink,6));
+      el.appendChild(bar(56,14,40,c3,4));
+      el.appendChild(bar(80,14,26,c3,3));
+    } else if(kind === "shape"){
+      const d = document.createElement("div");
+      d.className = "dot";
+      d.style.cssText = `width:46%;aspect-ratio:1;left:27%;top:18%;background:${c3};opacity:.75`;
+      el.appendChild(d);
+      el.appendChild(bar(74,20,60,ink,5));
+    } else if(kind === "quote"){
+      el.appendChild(bar(34,18,64,ink,5));
+      el.appendChild(bar(46,18,48,ink,5));
+      el.appendChild(bar(62,18,30,c3,3));
+    } else if(kind === "number"){
+      const d = document.createElement("div");
+      d.style.cssText = `position:absolute;left:16%;top:14%;font-size:34px;font-weight:800;color:${c4};opacity:.9;line-height:1`;
+      d.textContent = String(i+1).padStart(2,"0");
+      el.appendChild(d);
+      el.appendChild(bar(66,16,58,c4,5));
+      el.appendChild(bar(78,16,40,c4,4));
+    }
+    return el;
+  }
+
+  function buildFeed(container, pal, offset){
+    for(let i=0;i<9;i++){
+      container.appendChild(tile(LAYOUTS[(i+offset)%LAYOUTS.length], pal, i));
+    }
+  }
+
+  const grid = document.getElementById("packs-grid");
+  PACKS.forEach((pk, idx) => {
+    const card = document.createElement("div");
+    card.className = "pack reveal";
+    const feed = document.createElement("div");
+    feed.className = "feed";
+    buildFeed(feed, pk.p, idx);
+    const name = document.createElement("div");
+    name.className = "pack-name";
+    name.innerHTML = `<b>${pk.n}</b><span>${pk.t}</span>`;
+    card.appendChild(feed); card.appendChild(name);
+    card.onclick = () => location.href = "#precio";
+    grid.appendChild(card);
+  });
+
+  buildFeed(document.getElementById("mock-feed"), PACKS[0].p, 2);
+
+  // reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
 </body>
 </html>
