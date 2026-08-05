@@ -212,7 +212,8 @@
     margin-bottom:10px;
   }
   .plans .plans-sub{color:var(--gray);font-size:15px;font-weight:500;margin-bottom:5vh;max-width:480px}
-  .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .plans-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media(min-width:1180px){.plans-grid{grid-template-columns:repeat(4,1fr);gap:20px}}
   /* estilo flyer IG: papel claro con grilla, título negro, barra amarilla, texto violeta */
   .plan{
     background:#0a090c;
@@ -542,6 +543,19 @@
         <li>Diseño de creativos</li>
         <li>Reportes</li>
         <li>Acompañamiento y optimización</li>
+      </ul>
+      <span class="plink">consultar →</span>
+    </div>
+    <div class="plan" onclick="openModal()">
+      <span class="ptag">desarrollo web</span>
+      <h4>Páginas web & eCommerce</h4>
+      <ul>
+        <li>Diseño a medida, sin plantillas genéricas</li>
+        <li>Landings, sitios institucionales y tiendas online</li>
+        <li>Adaptado a celular y optimizado para cargar rápido</li>
+        <li>Carga de productos y medios de pago</li>
+        <li>Optimización SEO inicial</li>
+        <li>Capacitación para que lo manejes vos</li>
       </ul>
       <span class="plink">consultar →</span>
     </div>
