@@ -117,7 +117,7 @@
   .pack:hover{transform:translateY(-6px);border-color:var(--purple);box-shadow:0 18px 40px rgba(0,0,0,.45)}
   .pack img{
     width:100%;aspect-ratio:768/1010;object-fit:cover;
-    border-radius:9px;display:block;background:#fff;
+    border-radius:9px;display:block;background:#fff;cursor:zoom-in;
   }
   .pack-name{
     display:flex;justify-content:space-between;align-items:baseline;gap:10px;
@@ -198,6 +198,51 @@
 
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1;transform:none}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:300;display:none;
+    background:rgba(7,6,9,.94);
+    flex-direction:column;align-items:center;justify-content:center;
+    padding:64px 14px 96px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .lightbox.open{display:flex}
+  .lb-img{
+    max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;border-radius:10px;background:#fff;
+    box-shadow:0 24px 60px rgba(0,0,0,.6);
+    animation:lbIn .25s cubic-bezier(.2,.7,.2,1);
+    touch-action:pan-y pinch-zoom;
+  }
+  @keyframes lbIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+  .lb-cap{
+    position:absolute;left:0;right:0;bottom:26px;text-align:center;
+    font-size:14px;font-weight:700;color:var(--ink);padding:0 60px;
+  }
+  .lb-cap span{display:block;font-size:12.5px;font-weight:500;color:var(--gray);margin-top:3px}
+  .lb-btn{
+    position:absolute;background:rgba(23,21,28,.9);border:1px solid var(--line);
+    color:var(--ink);border-radius:50%;width:46px;height:46px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;font-family:inherit;font-weight:700;cursor:pointer;
+    transition:.2s;line-height:1;padding:0;
+  }
+  .lb-btn:hover{background:var(--yellow);color:#0e0d11;border-color:var(--yellow)}
+  .lb-close{top:14px;right:14px;font-size:20px}
+  .lb-prev{left:10px;top:50%;transform:translateY(-50%)}
+  .lb-next{right:10px;top:50%;transform:translateY(-50%)}
+  .lb-count{
+    position:absolute;top:22px;left:50%;transform:translateX(-50%);
+    font-size:12.5px;font-weight:700;color:var(--gray);letter-spacing:.1em;
+  }
+  @media(min-width:760px){
+    .lightbox{padding:70px 90px 90px}
+    .lb-btn{width:52px;height:52px}
+    .lb-prev{left:22px}
+    .lb-next{right:22px}
+    .lb-close{top:22px;right:22px}
+  }
 
   @media(max-width:1080px){
     .packs-grid{grid-template-columns:repeat(3,1fr)}
@@ -371,6 +416,16 @@
   </div>
 </section>
 
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+  <span class="lb-count" id="lb-count"></span>
+  <button class="lb-btn lb-close" id="lb-close" aria-label="Cerrar">✕</button>
+  <button class="lb-btn lb-prev" id="lb-prev" aria-label="Anterior">‹</button>
+  <button class="lb-btn lb-next" id="lb-next" aria-label="Siguiente">›</button>
+  <img class="lb-img" id="lb-img" alt="">
+  <p class="lb-cap" id="lb-cap"></p>
+</div>
+
 <footer>
   <span><img src="share%20-1.svg" alt="share"></span>
   <span><a href="https://www.instagram.com/share_mza" target="_blank" rel="noopener">@share_mza</a></span>
@@ -399,15 +454,72 @@
   ];
 
   const grid = document.getElementById("packs-grid");
-  PACKS.forEach(pk => {
+  PACKS.forEach((pk, i) => {
     const card = document.createElement("div");
     card.className = "pack reveal";
     card.innerHTML =
       `<img src="${pk.img}" alt="${pk.n} — plantillas de Canva" loading="lazy">` +
       `<div class="pack-name"><b>${pk.n}</b><span>${pk.t}</span></div>`;
-    card.onclick = () => location.href = "#precio";
+    card.onclick = () => openLightbox(i);
     grid.appendChild(card);
   });
+
+  /* ====== LIGHTBOX (tocar una imagen la agranda) ====== */
+  const lb      = document.getElementById("lightbox");
+  const lbImg   = document.getElementById("lb-img");
+  const lbCap   = document.getElementById("lb-cap");
+  const lbCount = document.getElementById("lb-count");
+  let lbIndex = 0;
+
+  function renderLightbox(){
+    const pk = PACKS[lbIndex];
+    lbImg.src = pk.img;
+    lbImg.alt = pk.n + " — plantillas de Canva";
+    lbCap.innerHTML = `${pk.n}<span>${pk.t}</span>`;
+    lbCount.textContent = (lbIndex + 1) + " / " + PACKS.length;
+  }
+  function openLightbox(i){
+    lbIndex = i; renderLightbox();
+    lb.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox(){
+    lb.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  function move(step){
+    lbIndex = (lbIndex + step + PACKS.length) % PACKS.length;
+    renderLightbox();
+    lbImg.style.animation = "none"; void lbImg.offsetWidth;
+    lbImg.style.animation = "";
+  }
+
+  document.getElementById("lb-close").onclick = closeLightbox;
+  document.getElementById("lb-prev").onclick  = e => { e.stopPropagation(); move(-1); };
+  document.getElementById("lb-next").onclick  = e => { e.stopPropagation(); move(1);  };
+  lb.addEventListener("click", e => { if(e.target === lb || e.target === lbImg) closeLightbox(); });
+  document.addEventListener("keydown", e => {
+    if(!lb.classList.contains("open")) return;
+    if(e.key === "Escape")     closeLightbox();
+    if(e.key === "ArrowLeft")  move(-1);
+    if(e.key === "ArrowRight") move(1);
+  });
+
+  // swipe en mobile
+  let tX = 0, tY = 0;
+  lb.addEventListener("touchstart", e => { tX = e.changedTouches[0].clientX; tY = e.changedTouches[0].clientY; }, {passive:true});
+  lb.addEventListener("touchend", e => {
+    const dx = e.changedTouches[0].clientX - tX;
+    const dy = e.changedTouches[0].clientY - tY;
+    if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+  }, {passive:true});
+
+  // la imagen de ejemplo también se agranda
+  const mockImg = document.querySelector(".mock img");
+  if(mockImg){
+    mockImg.style.cursor = "zoom-in";
+    mockImg.onclick = () => openLightbox(PACKS.findIndex(p => p.img === "IMG_1917.JPG"));
+  }
 
   // reveal on scroll
   const io = new IntersectionObserver(es => es.forEach(e => {
