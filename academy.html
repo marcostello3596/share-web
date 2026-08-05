@@ -112,20 +112,19 @@
   }
   .pack{
     background:var(--card2);border:1px solid var(--line);border-radius:16px;
-    padding:14px;transition:transform .3s,border-color .3s;cursor:pointer;
+    padding:10px;transition:transform .3s,border-color .3s,box-shadow .3s;cursor:pointer;
   }
-  .pack:hover{transform:translateY(-6px);border-color:var(--purple)}
-  .feed{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;border-radius:8px;overflow:hidden}
-  .tile{aspect-ratio:4/5;position:relative;overflow:hidden;display:block}
-  .tile .bar{position:absolute;height:5%;border-radius:2px;opacity:.85}
-  .tile .dot{position:absolute;border-radius:50%}
-  .tile .ring{position:absolute;border-radius:50%;border-style:solid}
+  .pack:hover{transform:translateY(-6px);border-color:var(--purple);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .pack img{
+    width:100%;aspect-ratio:768/1010;object-fit:cover;
+    border-radius:9px;display:block;background:#fff;
+  }
   .pack-name{
-    display:flex;justify-content:space-between;align-items:baseline;
-    margin-top:14px;padding:0 4px 4px;
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    margin-top:12px;padding:0 6px 6px;
   }
-  .pack-name b{font-size:15px;font-weight:800;letter-spacing:-.02em}
-  .pack-name span{font-size:12px;color:var(--gray);font-weight:600}
+  .pack-name b{font-size:14.5px;font-weight:800;letter-spacing:-.02em}
+  .pack-name span{font-size:12px;color:var(--gray);font-weight:600;text-align:right}
   .packs-more{
     margin-top:5vh;text-align:center;color:var(--gray);font-size:15px;font-weight:600;
   }
@@ -141,12 +140,9 @@
   .checklist li b{color:var(--ink);font-weight:700}
   .checklist svg{flex-shrink:0;margin-top:3px}
   .mock{
-    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;
+    background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;
   }
-  .mock .phone{
-    background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:14px;
-  }
-  .mock .phone .feed{gap:4px}
+  .mock img{width:100%;border-radius:12px;display:block;background:#fff}
   .mock-cap{margin-top:16px;font-size:13px;color:var(--gray);font-weight:600;text-align:center}
 
   /* ---------- PRECIO ---------- */
@@ -310,7 +306,7 @@
       </ul>
     </div>
     <div class="mock reveal">
-      <div class="phone"><div class="feed" id="mock-feed"></div></div>
+      <img src="IMG_1917.JPG" alt="Ejemplo de feed armado con las plantillas" loading="lazy">
       <p class="mock-cap">Así se ve un feed armado con las plantillas</p>
     </div>
   </div>
@@ -382,98 +378,36 @@
 </footer>
 
 <script>
-  /* ====== MOCKUPS DE FEED (placeholders) ======
-     Se generan por CSS: son maquetas de muestra para reemplazar
-     luego por las imágenes reales de cada pack.                */
+  /* ====== PACKS ====== */
   const PACKS = [
-    {n:"Pack Nutri",      t:"nutrición",       p:["#e8ecd7","#cdd6b0","#8f9b6d","#f5f3ea","#5f6a45"]},
-    {n:"Pack Dentist",    t:"odontología",     p:["#e7eef2","#c3d7e2","#7fa3b8","#f6f8f9","#3f5c6e"]},
-    {n:"Pack Fitness",    t:"gimnasios",       p:["#1f1f1f","#3a3a3a","#d7ff4f","#f2f2f0","#111111"]},
-    {n:"Pack Beauty",     t:"estética",        p:["#f3e3e0","#e3c3bd","#c39b93","#faf4f2","#7d5b55"]},
-    {n:"Pack Inmo",       t:"inmobiliarias",   p:["#efeae1","#d8cdbb","#a8917a","#f8f5f0","#4d4235"]},
-    {n:"Pack Gastro",     t:"gastronomía",     p:["#f0e2d5","#dfb894","#b96f3f","#faf3ec","#6b3b1f"]},
-    {n:"Pack Automotor",  t:"concesionarias",  p:["#e6e8ea","#c2c7cc","#5d6a76","#f4f5f6","#232a31"]},
-    {n:"Pack Indumentaria",t:"tiendas de ropa",p:["#f2efe9","#ded6c8","#b3a794","#faf8f4","#4a4438"]},
-    {n:"Pack Psico",      t:"salud mental",    p:["#ece6df","#d5c8bb","#a58f7c","#f7f3ee","#584a3d"]},
-    {n:"Pack Pet",        t:"veterinarias",    p:["#f6ecd8","#eed7a8","#cfa84f","#fbf6ea","#7a5c1e"]},
-    {n:"Pack Coach",      t:"coaching",        p:["#eae6f4","#cdc3e4","#9280c0","#f7f5fb","#4a3d70"]},
-    {n:"Pack Eventos",    t:"eventos",         p:["#f1e7ef","#dcc4d6","#a97fa0","#faf5f9","#5c3d55"]},
+    {img:"IMG_1912.JPG", n:"Pack Odontología",     t:"consultorios y clínicas"},
+    {img:"IMG_1920.JPG", n:"Pack Nutrición",       t:"nutricionistas"},
+    {img:"IMG_1919.JPG", n:"Pack Beauty",          t:"estética y cosmetología"},
+    {img:"IMG_1929.JPG", n:"Pack Personal Trainer",t:"entrenadores y gimnasios"},
+    {img:"IMG_1914.JPG", n:"Pack Fitness",         t:"indumentaria deportiva"},
+    {img:"IMG_1918.JPG", n:"Pack Psicología",      t:"terapia y salud mental"},
+    {img:"IMG_1928.JPG", n:"Pack Abogados",        t:"estudios jurídicos"},
+    {img:"IMG_1926.JPG", n:"Pack Arquitectura",    t:"estudios y diseño de interiores"},
+    {img:"IMG_1921.JPG", n:"Pack Tienda",          t:"locales y ecommerce"},
+    {img:"IMG_1927.JPG", n:"Pack Cejas y Pestañas",t:"lashistas y cejas"},
+    {img:"IMG_1913.JPG", n:"Pack Fotografía",      t:"fotógrafos y estudios"},
+    {img:"IMG_1923.JPG", n:"Pack Negocios",        t:"coaching y consultoría"},
+    {img:"IMG_1916.JPG", n:"Pack Lifestyle",       t:"marcas personales"},
+    {img:"IMG_1917.JPG", n:"Pack Estética",        t:"marcas minimalistas"},
+    {img:"IMG_1915.JPG", n:"Pack Bienestar",       t:"spa y autocuidado"},
+    {img:"IMG_1930.JPG", n:"Pack Navidad",         t:"fechas especiales"},
   ];
 
-  // layouts: cómo se compone cada casillero del feed
-  const LAYOUTS = ["photo","text","shape","quote","photo","number","photo","text","shape"];
-
-  function tile(kind, pal, i){
-    const [c1,c2,c3,c4,ink] = pal;
-    const el = document.createElement("div");
-    el.className = "tile";
-    const bgs = {photo:c2, text:c4, shape:c1, quote:c4, number:c3};
-    el.style.background = bgs[kind] || c1;
-
-    const bar = (top,left,width,color,h) => {
-      const b = document.createElement("div");
-      b.className = "bar";
-      b.style.top = top+"%"; b.style.left = left+"%";
-      b.style.width = width+"%"; b.style.background = color;
-      if(h) b.style.height = h+"%";
-      return b;
-    };
-
-    if(kind === "photo"){
-      el.style.background = `linear-gradient(150deg, ${c2}, ${c3})`;
-      const d = document.createElement("div");
-      d.className = "ring";
-      d.style.cssText = `width:52%;aspect-ratio:1;left:24%;top:22%;border-width:1.5px;border-color:${c4};opacity:.55`;
-      el.appendChild(d);
-      el.appendChild(bar(78,14,52,c4,4));
-    } else if(kind === "text"){
-      el.appendChild(bar(26,14,64,ink,6));
-      el.appendChild(bar(40,14,52,ink,6));
-      el.appendChild(bar(56,14,40,c3,4));
-      el.appendChild(bar(80,14,26,c3,3));
-    } else if(kind === "shape"){
-      const d = document.createElement("div");
-      d.className = "dot";
-      d.style.cssText = `width:46%;aspect-ratio:1;left:27%;top:18%;background:${c3};opacity:.75`;
-      el.appendChild(d);
-      el.appendChild(bar(74,20,60,ink,5));
-    } else if(kind === "quote"){
-      el.appendChild(bar(34,18,64,ink,5));
-      el.appendChild(bar(46,18,48,ink,5));
-      el.appendChild(bar(62,18,30,c3,3));
-    } else if(kind === "number"){
-      const d = document.createElement("div");
-      d.style.cssText = `position:absolute;left:16%;top:14%;font-size:34px;font-weight:800;color:${c4};opacity:.9;line-height:1`;
-      d.textContent = String(i+1).padStart(2,"0");
-      el.appendChild(d);
-      el.appendChild(bar(66,16,58,c4,5));
-      el.appendChild(bar(78,16,40,c4,4));
-    }
-    return el;
-  }
-
-  function buildFeed(container, pal, offset){
-    for(let i=0;i<9;i++){
-      container.appendChild(tile(LAYOUTS[(i+offset)%LAYOUTS.length], pal, i));
-    }
-  }
-
   const grid = document.getElementById("packs-grid");
-  PACKS.forEach((pk, idx) => {
+  PACKS.forEach(pk => {
     const card = document.createElement("div");
     card.className = "pack reveal";
-    const feed = document.createElement("div");
-    feed.className = "feed";
-    buildFeed(feed, pk.p, idx);
-    const name = document.createElement("div");
-    name.className = "pack-name";
-    name.innerHTML = `<b>${pk.n}</b><span>${pk.t}</span>`;
-    card.appendChild(feed); card.appendChild(name);
+    card.innerHTML =
+      `<img src="${pk.img}" alt="${pk.n} — plantillas de Canva" loading="lazy">` +
+      `<div class="pack-name"><b>${pk.n}</b><span>${pk.t}</span></div>`;
     card.onclick = () => location.href = "#precio";
     grid.appendChild(card);
   });
-
-  buildFeed(document.getElementById("mock-feed"), PACKS[0].p, 2);
 
   // reveal on scroll
   const io = new IntersectionObserver(es => es.forEach(e => {
