@@ -370,6 +370,9 @@
   /* ============ RESPONSIVE ============ */
   @media(max-width:900px){
     /* CTA visible pero más chico */
+    header{padding:14px;justify-content:flex-start}
+    .logo-chip{width:42px;height:42px}
+    .nav-links{padding:11px 18px;gap:16px;font-size:14px}
     .header-cta{top:14px;right:14px}
     .header-cta .pill{padding:11px 18px;font-size:14px}
     /* el video mantiene su proporción 16:9 en vez de recortarse en vertical */
@@ -400,6 +403,15 @@
   <div class="dots"><i></i><i></i><i></i></div>
 </div>
 
+<header>
+  <div class="nav-pill">
+    <a class="logo-chip" href="index.html"><img src="share%20-1.svg" alt="share"></a>
+    <nav class="nav-links">
+      <a href="agency.html">agency</a>
+      <a href="academy.html">academy</a>
+    </nav>
+  </div>
+</header>
 <div class="header-cta"><button class="pill" onclick="openModal()">empezar un proyecto</button></div>
 
 <!-- ============ HERO (video full-screen) ============ -->

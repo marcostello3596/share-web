@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHARE Agency — próximamente</title>
+<meta name="description" content="SHARE Agency: marketing digital y diseño. Muy pronto.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0d11;--ink:#f1efe9;--gray:#8d8a93;--purple:#6c35c9;
+    --yellow:#f2e34c;--card:#17151c;--line:rgba(241,239,233,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Inter Tight",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100svh;display:flex;flex-direction:column;
+    position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;
+    background:url("share%20-2.svg") center/cover no-repeat;
+    opacity:.16;pointer-events:none;z-index:0;
+  }
+  a{color:inherit;text-decoration:none}
+  svg{display:block}
+  ::selection{background:var(--yellow);color:#0e0d11}
+
+  header{
+    position:relative;z-index:2;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;gap:16px;flex-wrap:wrap;
+  }
+  .nav-pill{display:flex;align-items:center;gap:6px}
+  .logo-chip{
+    width:50px;height:50px;border-radius:50%;background:var(--card);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);box-shadow:0 2px 14px rgba(0,0,0,.4);
+  }
+  .logo-chip img{width:68%;height:68%;object-fit:contain}
+  .nav-links{
+    background:var(--card);border:1px solid var(--line);border-radius:100px;
+    display:flex;gap:26px;padding:14px 28px;font-size:15.5px;font-weight:600;
+  }
+  .nav-links a{opacity:.7;transition:.2s}
+  .nav-links a:hover{opacity:1;color:var(--yellow)}
+  .nav-links a.on{opacity:1;color:var(--yellow)}
+  .pill{
+    display:inline-block;border:none;border-radius:100px;
+    background:var(--purple);color:var(--ink);
+    padding:14px 26px;font-size:15.5px;font-weight:700;
+    cursor:pointer;font-family:inherit;transition:.2s;
+  }
+  .pill:hover{background:var(--yellow);color:#0e0d11}
+
+  main{
+    position:relative;z-index:2;flex:1;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:6vh 28px 10vh;max-width:1100px;
+  }
+  .eyebrow{
+    display:block;font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--yellow);margin-bottom:26px;
+  }
+  h1{
+    font-weight:700;letter-spacing:-.04em;line-height:1;
+    font-size:clamp(52px,11vw,168px);text-transform:lowercase;
+  }
+  h1 .soon{color:#46434e;display:block}
+  main p{
+    margin-top:5vh;max-width:520px;color:var(--gray);
+    font-size:clamp(16px,1.8vw,20px);line-height:1.55;font-weight:500;
+  }
+  main p mark{background:var(--purple);color:var(--ink);padding:.04em .18em;border-radius:4px}
+  .actions{margin-top:6vh;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .ghost{
+    border:1px solid var(--line);border-radius:100px;
+    padding:14px 26px;font-size:15.5px;font-weight:700;transition:.2s;
+  }
+  .ghost:hover{border-color:var(--yellow);color:var(--yellow)}
+
+  .doodle{position:fixed;z-index:1;pointer-events:none}
+  .smile{top:16%;right:7vw;width:clamp(90px,11vw,190px)}
+  .star{bottom:16%;right:20vw;width:clamp(46px,5vw,90px);animation:spin 22s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  footer{
+    position:relative;z-index:2;
+    border-top:1px solid var(--line);padding:24px 28px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:13.5px;color:var(--gray);font-weight:500;
+  }
+  footer a:hover{color:var(--yellow)}
+
+  @media(max-width:900px){
+    header{padding:14px}
+    .logo-chip{width:42px;height:42px}
+    .nav-links{padding:11px 18px;gap:16px;font-size:14px}
+    .pill{padding:11px 18px;font-size:14px}
+    main{padding:4vh 18px 8vh}
+    footer{padding:20px 18px;flex-direction:column;align-items:flex-start;gap:8px}
+    .star{display:none}
+    .smile{top:auto;bottom:22%;right:6vw}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-pill">
+    <a class="logo-chip" href="index.html"><img src="share%20-1.svg" alt="share"></a>
+    <nav class="nav-links">
+      <a class="on" href="agency.html">agency</a>
+      <a href="academy.html">academy</a>
+    </nav>
+  </div>
+  <a class="pill" href="index.html">volver al inicio</a>
+</header>
+
+<svg class="doodle smile" viewBox="0 0 200 200" fill="none">
+  <path d="M97 13 C 146 8 188 48 187 99 C 186 151 149 189 99 187 C 49 185 12 147 14 97 C 16 49 51 17 97 13 Z" stroke="#f2e34c" stroke-width="16" stroke-linecap="round"/>
+  <path d="M56 80 q15 -16 31 -2" stroke="#f2e34c" stroke-width="13" stroke-linecap="round"/>
+  <ellipse cx="130" cy="78" rx="12" ry="19" fill="#f2e34c" transform="rotate(6 130 78)"/>
+  <path d="M57 122 q40 38 85 2" stroke="#f2e34c" stroke-width="15" stroke-linecap="round"/>
+</svg>
+<svg class="doodle star" viewBox="0 0 100 100" fill="none">
+  <path d="M50 2 L58 42 L98 50 L58 58 L50 98 L42 58 L2 50 L42 42 Z" fill="#6c35c9"/>
+</svg>
+
+<main>
+  <span class="eyebrow">share agency</span>
+  <h1>agency<span class="soon">próximamente</span></h1>
+  <p>Estamos armando esta sección. Mientras tanto, <mark>ya estamos trabajando</mark>: si querés que tu marca crezca, escribinos y arrancamos.</p>
+  <div class="actions">
+    <a class="pill" href="https://wa.me/5492616979251?text=%C2%A1Hola%20SHARE!%20Quiero%20hacer%20una%20consulta." target="_blank" rel="noopener">hablemos por whatsapp</a>
+    <a class="ghost" href="index.html">ver la web</a>
+  </div>
+</main>
+
+<footer>
+  <span>share — marketing digital &amp; diseño</span>
+  <span><a href="https://www.instagram.com/share_mza" target="_blank" rel="noopener">@share_mza</a></span>
+  <span>© 2026 share. todos los derechos reservados.</span>
+</footer>
+
+</body>
+</html>
