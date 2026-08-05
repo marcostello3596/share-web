@@ -575,10 +575,10 @@
     <button class="modal-close" onclick="closeModal()">✕</button>
     <h3>Trabajemos <span class="script">juntos</span></h3>
     <p>Contanos brevemente sobre tu proyecto, o simplemente dejanos tus datos. Te contactamos :)</p>
-    <form onsubmit="event.preventDefault();alert('¡Gracias! Te vamos a contactar pronto.');closeModal();this.reset()">
-      <div class="field"><label>nombre</label><input type="text" required placeholder="tu nombre"></div>
-      <div class="field"><label>email o teléfono</label><input type="text" required placeholder="¿cómo te contactamos?"></div>
-      <div class="field"><label>tu proyecto</label><textarea rows="3" placeholder="qué necesitás, plazos, lo que quieras sumar…"></textarea></div>
+    <form onsubmit="enviarWhatsapp(event)">
+      <div class="field"><label>nombre</label><input type="text" id="f-nombre" required placeholder="tu nombre"></div>
+      <div class="field"><label>email o teléfono</label><input type="text" id="f-contacto" required placeholder="¿cómo te contactamos?"></div>
+      <div class="field"><label>tu proyecto</label><textarea id="f-proyecto" rows="3" placeholder="qué necesitás, plazos, lo que quieras sumar…"></textarea></div>
       <label class="agree"><input type="checkbox" required> acepto los términos de la <a href="#">política de privacidad</a></label>
       <button class="submit" type="submit">¡Animate!</button>
     </form>
@@ -613,6 +613,29 @@
     setTimeout(hide,5000);
     addEventListener('load',()=>setTimeout(hide,1500));
   })();
+
+  // ====== WHATSAPP ======
+  // Número de destino en formato internacional, sin +, sin espacios ni guiones.
+  // Argentina: 54 + 9 + código de área sin el 0 + número sin el 15.
+  // Ej.: Mendoza 261 555-1234  ->  "5492615551234"
+  const WHATSAPP = "5492616979251";
+
+  function enviarWhatsapp(e){
+    e.preventDefault();
+    const nombre   = document.getElementById('f-nombre').value.trim();
+    const contacto = document.getElementById('f-contacto').value.trim();
+    const proyecto = document.getElementById('f-proyecto').value.trim();
+
+    let msg = "¡Hola SHARE! Quiero hacer una consulta.\n\n";
+    msg += "Nombre: " + nombre + "\n";
+    msg += "Contacto: " + contacto + "\n";
+    if(proyecto) msg += "Proyecto: " + proyecto + "\n";
+    msg += "\n(Enviado desde la web)";
+
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank");
+    closeModal();
+    e.target.reset();
+  }
 
   function openModal(){document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden'}
   function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
