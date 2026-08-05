@@ -45,20 +45,15 @@
     padding:22px 28px;pointer-events:none;
   }
   header>*{pointer-events:auto}
-  .nav-pill{display:flex;align-items:center;gap:6px}
-  .logo-chip{
-    width:50px;height:50px;border-radius:50%;
-    background:var(--card);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 2px 14px rgba(0,0,0,.4);border:1px solid var(--line);
-  }
-  .logo-chip img{width:68%;height:68%;object-fit:contain}
   .nav-links{
     background:var(--card);border:1px solid var(--line);border-radius:100px;
     display:flex;gap:30px;padding:15px 30px;
     font-size:16px;font-weight:600;
     box-shadow:0 2px 14px rgba(0,0,0,.4);
   }
-  .nav-links a:hover{color:var(--yellow)}
+  .nav-links a{opacity:.7;transition:.2s}
+  .nav-links a:hover{opacity:1;color:var(--yellow)}
+  .nav-links a.on{opacity:1;color:var(--yellow)}
   .header-cta{position:fixed;top:22px;right:28px;z-index:101}
   .pill{
     display:inline-block;border:none;border-radius:100px;
@@ -371,7 +366,6 @@
   @media(max-width:900px){
     /* CTA visible pero más chico */
     header{padding:14px;justify-content:flex-start}
-    .logo-chip{width:42px;height:42px}
     .nav-links{padding:11px 18px;gap:16px;font-size:14px}
     .header-cta{top:14px;right:14px}
     .header-cta .pill{padding:11px 18px;font-size:14px}
@@ -404,13 +398,10 @@
 </div>
 
 <header>
-  <div class="nav-pill">
-    <a class="logo-chip" href="index.html"><img src="share%20-1.svg" alt="share"></a>
-    <nav class="nav-links">
-      <a href="agency.html">agency</a>
-      <a href="academy.html">academy</a>
-    </nav>
-  </div>
+  <nav class="nav-links">
+    <a class="on" href="index.html">agency</a>
+    <a href="academy.html">academy</a>
+  </nav>
 </header>
 <div class="header-cta"><button class="pill" onclick="openModal()">empezar un proyecto</button></div>
 
